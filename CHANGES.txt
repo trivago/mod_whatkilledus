@@ -1,0 +1,56 @@
+Changes with version 2.01
+
+*) mod_whatkilledus improvements:
+
+   The name of the log file can now be configured with the WKULogfile
+   directive.
+
+   On Windows: Add directive WKUDisableWindowsErrorBox to allow disabling
+   the pop-up error handling dialog after a child process crash.
+
+   On Windows: Handle exceptions in 64-bit builds.
+
+   With Event MPM on Unix: When building with httpd 2.4.10 or later,
+   properly track request processing across threads with the Event MPM.
+   Previously, the wrong client and/or request might be logged as the
+   trigger for a crash (with the Event MPM only).  The change is not
+   effective when building with httpd 2.4.9 or earlier.
+
+*) mod_backtrace improvements:
+
+   Support libunwind on Linux, FreeBSD, and OS X.  This provides better 
+   resolution of function names, at least on Linux and FreeBSD, so a raw 
+   address will be provided in lieu of the function name in fewer 
+   situations.  OS X note: A libunwind build silently fails to capture a
+   backtrace with 32-bit builds, so use the default mechanism with 32-bit 
+   builds on OS X.  (Add "LIBUNWIND=yes" to the make invocation.)
+
+   Filter out internal functions from backtraces so that only the caller's
+   stack frames are reported.
+
+   Improve formatting of a backtrace for the error log field.
+
+*) Build improvements:
+
+   Support "make APXS=/path/to/apxs" for building with non-default
+   install layouts.
+
+   Support Clang on FreeBSD 10.  (Add "CLANG=yes" to the make invocation.)
+
+   Add -funwind-tables on ARM platform for better backtraces.
+
+   mod_whatkilledus fails to build in a less mysterious way when using
+   an httpd build that doesn't have exception hooks enabled.
+
+Changes with version 2.0
+
+   Versions 2.0 and above of mod_backtrace and mod_whatkilledus are
+   complete rewrites by Jeff Trawick of earlier modules of the same names
+   which provided similar functionality.
+
+   The original versions of the modules were written by me and, with the
+   permission by my employer at the time, submitted to the Apache
+   HTTP Server Project for possible inclusion.  They were accepted to
+   Apache HTTP Server 1.3 and committed in February 2004.  They were not
+   committed to the Apache HTTP Server 2.x tree, but instead were distributed
+   from http://people.apache.org/~trawick/ for many years.
