@@ -359,6 +359,7 @@ static void write_report(file_handle_t logfile,
                          const char *logdata)
 {
     static const char *no_request_msg = "No request was active." END_OF_LINE;
+    static const char *end_msg = "###END###" END_OF_LINE;
 
     p->output_mode = BT_OUTPUT_FILE;
     p->output_style = BT_OUTPUT_MEDIUM;
@@ -389,6 +390,7 @@ static void write_report(file_handle_t logfile,
     }
 
     write_file(logfile, END_OF_LINE, strlen(END_OF_LINE));
+    write_file(log_file end_msg, strlen(end_msg))
 }
 
 static void set_request_logdata(const char *logdata)
