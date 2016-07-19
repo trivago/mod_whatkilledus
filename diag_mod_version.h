@@ -16,6 +16,6 @@
 #ifndef DIAG_MOD_VERSION_H
 #define DIAG_MOD_VERSION_H
 
-#define DIAG_MOD_VERSION "2.01"
+#define DIAG_MOD_VERSION "2.02"
 
 #endif
