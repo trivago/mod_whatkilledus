@@ -390,7 +390,7 @@ static void write_report(file_handle_t logfile,
     }
 
     write_file(logfile, END_OF_LINE, strlen(END_OF_LINE));
-    write_file(logfile end_msg, strlen(end_msg))
+    write_file(logfile, end_msg, strlen(end_msg));
 }
 
 static void set_request_logdata(const char *logdata)
